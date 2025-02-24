@@ -493,7 +493,12 @@ public class ProductServiceImpl implements ProductService{
 		else {
 			mapper.qnaDelete2(ref);
 		}
-		return "redirect:/product/productContent?pcode="+pcode;
+		if(request.getParameter("chk")==null) {
+			return "redirect:/product/productContent?pcode="+pcode;
+		}
+		else {
+			return "redirect:/member/qnaList";
+		}
 	}
 	
 }

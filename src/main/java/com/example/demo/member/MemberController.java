@@ -86,8 +86,8 @@ public class MemberController {
 		return service.reviewUpdate(request, session,model);
 	}
 	@PostMapping("/member/reviewUpdateOk")
-	public String reviewUpdateOk(ReviewDto rdto,HttpSession session) {
-		return service.reviewUpdateOk(rdto, session);
+	public String reviewUpdateOk(ReviewDto rdto,HttpSession session,HttpServletRequest request) {
+		return service.reviewUpdateOk(rdto, session,request);
 	}
 	@GetMapping("/member/memberInfo")
 	public String memberInfo(HttpSession session,Model model) {
@@ -117,5 +117,8 @@ public class MemberController {
 	public String reviewList(HttpSession session,Model model) {
 		return service.reviewList(session, model);
 	}
-	
+	@GetMapping("/member/qnaList")
+	public String qnaList(HttpSession session,Model model) {
+		return service.qnaList(session, model);
+	}
 }

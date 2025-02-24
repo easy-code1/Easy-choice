@@ -53,9 +53,12 @@ window.onpageshow=function(){
 <body>
 <section>
   <form name="rform" method="post" action="reviewUpdateOk">
+    <c:if test="${chk!=null}">
+      <input type="hidden" name="chk" value="${chk}">
+    </c:if>
     <input type="hidden" name="id" value="${rdto.id}">
     <input type="hidden" name="pcode" value="${rdto.pcode}">
-    <input type="hidden" name="star">
+    <input type="hidden" name="star" value="${rdto.star}">
     <h3 align="center">상품평 쓰기</h3>
     <div>
       <%-- <c:forEach begin="1" end="${rdto.star}" varStatus="sts">

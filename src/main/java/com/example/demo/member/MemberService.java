@@ -25,11 +25,12 @@ public interface MemberService {
 	public String reviewOk(HttpSession session,ReviewDto rdto);
 	public String reviewDelete(HttpServletRequest request,HttpSession session);
 	public String reviewUpdate(HttpServletRequest request,HttpSession session,Model model);
-	public String reviewUpdateOk(ReviewDto rdto,HttpSession session);
+	public String reviewUpdateOk(ReviewDto rdto,HttpSession session,HttpServletRequest request);
 	public String memberInfo(HttpSession session,Model model);
 	public String chgEmail(HttpServletRequest request,HttpSession session);
 	public String chgPhone(HttpServletRequest request,HttpSession session);
 	public String chgPwd(HttpServletRequest request,HttpSession session);	
 	public String baesongList(HttpSession session,Model model);
 	public String reviewList(HttpSession session,Model model);
+	public String qnaList(HttpSession session,Model model);
 }

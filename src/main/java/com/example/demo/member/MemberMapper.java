@@ -43,4 +43,5 @@ public interface MemberMapper {
     public boolean isPwd(String userid,String oldPwd);
     public ArrayList<BaesongDto> baesongList(String userid);
     public ArrayList<HashMap> reviewList(String userid);
+    public ArrayList<HashMap> qnaList(String userid);
 }

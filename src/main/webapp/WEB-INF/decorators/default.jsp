@@ -55,6 +55,7 @@ header #mySub{
   padding-left:0px;
   background:white;
   visibility:hidden;
+  z-index:999;
 }
 header #mySub > li{
   list-style-type:none;
@@ -358,7 +359,7 @@ function hideMy(){
         <li><a href="../member/jumunList">주문내역</a></li>
         <li><a href="../member/baesongList">배송지정보</a></li>
         <li><a href="../member/reviewList">상품평관리</a></li>
-        <li><a href="">상품문의</a></li>
+        <li><a href="../member/qnaList">상품문의</a></li>
       </ul>
     </span> |
     <a href="../login/logout">로그아웃</a> |

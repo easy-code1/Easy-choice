@@ -144,4 +144,10 @@ on p.pcode=r.pcode
 where userid=#{userid}
 order by id desc
 </select>
+<select id="qnaList" resultType="HashMap">
+select id,content,writeday,ref as r,
+(select title from product where pcode=qna.pcode) as ptitle,
+(select content from qna where ref=r and userid='admin') as adminCnt
+from qna where userid=#{userid}
+</select>
 </mapper>

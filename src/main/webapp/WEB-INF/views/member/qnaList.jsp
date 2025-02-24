@@ -33,32 +33,22 @@
 <body>
 <section>
   <table width="1100" align="center">
-    <caption><h3>상품평 목록</h3></caption>
+    <caption><h3>상품 문의</h3></caption>
     <tr>
-      <td>상품명</td>
-      <td>별점</td>
-      <td>한줄평</td>
-      <td>상품평</td>
+      <td width="160">상품명</td>
+      <td>문의내용</td>
+      <td>답변내용</td>
       <td>작성일</td>
-      <td>수정/삭제</td>
+      <td>삭제</td>
     </tr>
     <c:forEach items="${mapAll}" var="map">
     <tr>
       <td>${map.ptitle}</td>
-      <td>
-        <c:forEach begin="1" end="${map.star}">
-          <img src="../static/star1.png" width="16">
-        </c:forEach>
-        <c:forEach begin="1" end="${5-map.star}">
-          <img src="../static/star2.png" width="16">
-        </c:forEach>
-      </td>
-      <td>${map.title}</td>
       <td>${map.content}</td>
+      <td>${map.adminCnt}</td>
       <td>${map.writeday}</td>
       <td>
-        <input type="button" value="수정" onclick="location='reviewUpdate?id=${map.id}&pcode=${map.pcode}&chk=1'">
-        <input type="button" value="삭제" onclick="location='reviewDelete?id=${map.id}&pcode=${map.pcode}&gid=${map.gid}&chk=1'">        
+        <input type="button" value="삭제" onclick="location='../product/qnaDelete?id=${map.id}&ref=${map.r}&chk=1'">
       </td>
     </tr>
     </c:forEach>

@@ -345,7 +345,13 @@ public class MemberServiceImpl implements MemberService{
 			double avg=mapper.avgStar(pcode);
 			mapper.chgStar2(avg,pcode);
 			mapper.setReview(gid);
-			return "redirect:/product/productContent?pcode="+pcode;
+			if(request.getParameter("chk")==null) {
+				return "redirect:/product/productContent?pcode="+pcode;
+			}
+			else {
+				return "redirect:/member/reviewList";
+			}
+			
 		}
 	}
 
@@ -359,12 +365,14 @@ public class MemberServiceImpl implements MemberService{
 			String pcode=request.getParameter("pcode");
 			ReviewDto rdto=mapper.getReview(id);
 			model.addAttribute("rdto",rdto);
+			String chk=request.getParameter("chk");
+			model.addAttribute("chk",chk);
 			return "/member/reviewUpdate";
 		}
 	}
 
 	@Override
-	public String reviewUpdateOk(ReviewDto rdto, HttpSession session) {
+	public String reviewUpdateOk(ReviewDto rdto, HttpSession session,HttpServletRequest request) {
 		if(session.getAttribute("userid")==null) {
 			return "redirect:/login/login";
 		}
@@ -372,7 +380,13 @@ public class MemberServiceImpl implements MemberService{
 			mapper.reviewUpdateOk(rdto);
 			double avg=mapper.avgStar(rdto.getPcode());
 			mapper.chgStar(rdto.getPcode(), avg);
-			return "redirect:/product/productContent?pcode="+rdto.getPcode();
+			if(request.getParameter("chk")==null) {
+				return "redirect:/product/productContent?pcode="+rdto.getPcode();
+			}
+			else {
+				return "redirect:/member/reviewList";
+			}
+			
 		}
 	}
 
@@ -470,6 +484,19 @@ public class MemberServiceImpl implements MemberService{
 			ArrayList<HashMap> mapAll=mapper.reviewList(userid);
 			model.addAttribute("mapAll",mapAll);
 			return "/member/reviewList";
+		}
+	}
+
+	@Override
+	public String qnaList(HttpSession session, Model model) {
+		if(session.getAttribute("userid")==null) {
+			return "redirect:/login/login";
+		}
+		else {
+			String userid=session.getAttribute("userid").toString();
+			ArrayList<HashMap> mapAll=mapper.qnaList(userid);
+			model.addAttribute("mapAll",mapAll);
+			return "/member/qnaList";
 		}
 	}
 	
