@@ -459,6 +459,19 @@ public class MemberServiceImpl implements MemberService{
 		model.addAttribute("blist",blist);
 		return "/member/baesongList";
 	}
+
+	@Override
+	public String reviewList(HttpSession session, Model model) {
+		if(session.getAttribute("userid")==null) {
+			return "redirect:/login/login";
+		}
+		else {
+			String userid=session.getAttribute("userid").toString();
+			ArrayList<HashMap> mapAll=mapper.reviewList(userid);
+			model.addAttribute("mapAll",mapAll);
+			return "/member/reviewList";
+		}
+	}
 	
 
 }

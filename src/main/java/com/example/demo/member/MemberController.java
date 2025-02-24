@@ -113,5 +113,9 @@ public class MemberController {
 	public String baesongWrite() {
 		return "/member/baesongWrite";
 	}
+	@GetMapping("/member/reviewList")
+	public String reviewList(HttpSession session,Model model) {
+		return service.reviewList(session, model);
+	}
 	
 }

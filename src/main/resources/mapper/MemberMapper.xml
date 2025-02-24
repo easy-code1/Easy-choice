@@ -137,4 +137,11 @@ select * from baesong
 where userid=#{userid}
 order by gibon desc,id desc
 </select>
+<select id="reviewList" resultType="HashMap">
+select p.title as ptitle,r.*
+from product as p inner join review as r
+on p.pcode=r.pcode 
+where userid=#{userid}
+order by id desc
+</select>
 </mapper>

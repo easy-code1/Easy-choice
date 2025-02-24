@@ -42,4 +42,5 @@ public interface MemberMapper {
     public void chgPwd(String userid,String newPwd);
     public boolean isPwd(String userid,String oldPwd);
     public ArrayList<BaesongDto> baesongList(String userid);
+    public ArrayList<HashMap> reviewList(String userid);
 }

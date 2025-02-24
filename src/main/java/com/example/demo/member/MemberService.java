@@ -31,4 +31,5 @@ public interface MemberService {
 	public String chgPhone(HttpServletRequest request,HttpSession session);
 	public String chgPwd(HttpServletRequest request,HttpSession session);	
 	public String baesongList(HttpSession session,Model model);
+	public String reviewList(HttpSession session,Model model);
 }
