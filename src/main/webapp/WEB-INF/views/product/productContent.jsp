@@ -426,7 +426,7 @@ window.onscroll=function(){
           <img src="../static/minus.png" valign="middle" onclick="downSu()">
           <input type="text" name="su" value="1" id="su" readonly>
           <img src="../static/plus.png" valign="middle" onclick="upSu()">
-        </div>
+          </div>
         <input type="button" value="장바구니" id="cartBtn" onclick="addCart()">
         <input type="submit" value="바로구매" id="gumaeBtn">
         
