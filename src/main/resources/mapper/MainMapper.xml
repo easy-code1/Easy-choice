@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.main.MainMapper">
-
+  <select id="getEvent" resultType="com.example.demo.dto.ProductDto">
+     select * from product
+     <if test="n==0">
+       order by writeday desc        
+     </if> 
+     <if test="n==1">
+       order by pansu desc      
+     </if>  
+     <if test="n==2">
+       order by star desc      
+     </if>    
+      
+      limit 4;
+  
+  </select>
 </mapper>

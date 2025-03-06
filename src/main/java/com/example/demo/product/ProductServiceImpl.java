@@ -410,7 +410,7 @@ public class ProductServiceImpl implements ProductService{
 			int num=mapper.getNumber(jumuncode);
 			jumuncode+=String.format("%03d", num);
 			gdto.setJumuncode(jumuncode);
-			String[] pcodes=gdto.getPcode().split("/");
+			String[] pcodes=gdto.getPcode().split("/"); 
 			String[] sus=gdto.getSus().split("/");
 			for(int i=0;i<pcodes.length;i++) {
 				gdto.setPcode(pcodes[i]);
