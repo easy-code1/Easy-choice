@@ -33,6 +33,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public String productList(HttpServletRequest request, Model model) {
 		String pcode=request.getParameter("pcode");
+		String sword=request.getParameter("sword");
 		int page=1;
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -44,7 +45,13 @@ public class ProductServiceImpl implements ProductService{
 		}
 		pstart=pstart*10+1;
 		int pend=pstart+9;
-		int chong=mapper.getChong(pcode);
+		int chong;
+		if(pcode==null || pcode.length()==0) {
+			chong=mapper.getChong(sword,0);
+		}
+		else {
+			chong=mapper.getChong(pcode,1);
+		}
 		if(pend>chong) {
 			pend=chong;
 		}
@@ -69,28 +76,40 @@ public class ProductServiceImpl implements ProductService{
 		model.addAttribute("order",order);
 		
 		String menuList="";
-		if(pcode.length()==3) {
-			String daeName=mapper.getDae(pcode.substring(1));
-			menuList="Home - "+daeName;
-		}
-		else if(pcode.length()==5) {
-			String dae=pcode.substring(1,3);
-			String jung=pcode.substring(3,5);
-			String daeName=mapper.getDae(dae);
-			String jungName=mapper.getJung(jung, dae);
-			menuList="Home - "+daeName+" - "+jungName;
+		if(pcode==null || pcode.equals("")) {
+			menuList="검색어 : "+sword;
 		}
 		else {
-			String dae=pcode.substring(1,3);
-			String jung=pcode.substring(3,5);
-			String so=pcode.substring(5,7);
-			String daeName=mapper.getDae(dae);
-			String jungName=mapper.getJung(jung, dae);
-			String soName=mapper.getSo(so, dae+jung);
-			menuList="Home - "+daeName+" - "+jungName+" - "+soName;
+			if(pcode.length()==3) {
+				String daeName=mapper.getDae(pcode.substring(1));
+				menuList="Home - "+daeName;
+			}
+			else if(pcode.length()==5) {
+				String dae=pcode.substring(1,3);
+				String jung=pcode.substring(3,5);
+				String daeName=mapper.getDae(dae);
+				String jungName=mapper.getJung(jung, dae);
+				menuList="Home - "+daeName+" - "+jungName;
+			}
+			else {
+				String dae=pcode.substring(1,3);
+				String jung=pcode.substring(3,5);
+				String so=pcode.substring(5,7);
+				String daeName=mapper.getDae(dae);
+				String jungName=mapper.getJung(jung, dae);
+				String soName=mapper.getSo(so, dae+jung);
+				menuList="Home - "+daeName+" - "+jungName+" - "+soName;
+			}
 		}
+		model.addAttribute("sword",sword);
 		model.addAttribute("menuList",menuList);
-		ArrayList<ProductDto> plist=mapper.productList(index,pcode,orderStr);
+		ArrayList<ProductDto> plist;
+		 if(pcode==null || pcode.length()==0){
+		    plist=mapper.productList(index,sword,orderStr,0);
+		 }
+		 else{
+		    plist=mapper.productList(index,pcode,orderStr,1);
+		 }
 		
 		for(int i=0;i<plist.size();i++) {
 			ProductDto pdto=plist.get(i);

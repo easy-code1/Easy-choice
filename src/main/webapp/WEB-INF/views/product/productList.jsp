@@ -107,11 +107,11 @@ window.onpageshow=function(){
 ${menuList}
 </div>
 <div id="orderList">
-  <a href="productList?pcode=${pcode}&order=1" class="order">판매량순 | </a>
-  <a href="productList?pcode=${pcode}&order=2" class="order">가격높은순 | </a>
-  <a href="productList?pcode=${pcode}&order=3" class="order">가격낮은순 | </a>
-  <a href="productList?pcode=${pcode}&order=4" class="order">최신상품순 | </a>
-  <a href="productList?pcode=${pcode}&order=5" class="order">별점높은순 </a>
+  <a href="productList?pcode=${pcode}&order=1&sword=${sword}" class="order">판매량순 | </a>
+  <a href="productList?pcode=${pcode}&order=2&sword=${sword}" class="order">가격높은순 | </a>
+  <a href="productList?pcode=${pcode}&order=3&sword=${sword}" class="order">가격낮은순 | </a>
+  <a href="productList?pcode=${pcode}&order=4&sword=${sword}" class="order">최신상품순 | </a>
+  <a href="productList?pcode=${pcode}&order=5&sword=${sword}" class="order">별점높은순 </a>
 </div>
 <table align="center" width="1100">
   <tr>
@@ -166,30 +166,30 @@ ${menuList}
         ◁◁
       </c:if>    
       <c:if test="${pstart!=1}">
-        <a href="productList?pcode=${pcode}&page=${pstart-1}">◁◁</a>
+        <a href="productList?pcode=${pcode}&page=${pstart-1}&sword=${sword}&order=${order}">◁◁</a>
       </c:if>
       <c:if test="${page==1}">
         ◁
       </c:if>    
       <c:if test="${page!=1}">
-        <a href="productList?pcode=${pcode}&page=${page-1}">◁</a>
+        <a href="productList?pcode=${pcode}&page=${page-1}&sword=${sword}&order=${order}">◁</a>
       </c:if>
       <c:forEach var="i" begin="${pstart}" end="${pend}">
         <c:if test="${page!=i}">
-          <a href="productList?pcode=${pcode}&page=${i}">${i}</a>
+          <a href="productList?pcode=${pcode}&page=${i}&sword=${sword}&order=${order}">${i}</a>
         </c:if>
         <c:if test="${page==i}">
-          <a href="productList?pcode=${pcode}&page=${i}" style="color:red;">${i}</a>
+          <a href="productList?pcode=${pcode}&page=${i}&sword=${sword}&order=${order}" style="color:red;">${i}</a>
         </c:if>
       </c:forEach>
       <c:if test="${page!=chong}">
-        <a href="productList?pcode=${pcode}&page=${page+1}">▷</a>
+        <a href="productList?pcode=${pcode}&page=${page+1}&sword=${sword}&order=${order}">▷</a>
       </c:if>
       <c:if test="${page==chong}">
         ▷
       </c:if>
       <c:if test="${pend!=chong}">
-        <a href="productList?pcode=${pcode}&page=${pend+1}">▷▷</a>
+        <a href="productList?pcode=${pcode}&page=${pend+1}&sword=${sword}&order=${order}">▷▷</a>
       </c:if>
       <c:if test="${pend==chong}">
         ▷▷

@@ -14,8 +14,8 @@ import com.example.demo.dto.ReviewDto;
 
 @Mapper
 public interface ProductMapper {
-	public ArrayList<ProductDto> productList(int index,String pcode,String orderStr);
-	public int getChong(String pcode);
+	public ArrayList<ProductDto> productList(int index,String pcode,String orderStr,int ck);
+	public int getChong(String pcode,int ck);
 	public String getDae(String code);
 	public String getJung(String code,String daecode);
 	public String getSo(String code,String daejung);

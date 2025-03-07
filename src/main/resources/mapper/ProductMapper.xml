@@ -3,14 +3,28 @@
 <mapper namespace="com.example.demo.product.ProductMapper">
 <select id="productList" resultType="com.example.demo.dto.ProductDto">
 select * from product
-where pcode like concat(#{pcode},'%')
+where 
+<if test="ck==0"> 
+title like concat('%', #{pcode} , '%')
+</if>
+<if test="ck==1">
+pcode like concat(#{pcode} , '%')
+</if>
 order by ${orderStr}
 limit #{index},20
 </select>
+
 <select id="getChong" resultType="Integer">
 select ceil(count(*)/20) from product
-where pcode like concat(#{pcode},'%') 
+where
+<if test="ck==0">
+title like concat('%',#{pcode},'%')
+</if>
+<if test="ck==1">
+pcode like concat(#{pcode},'%')
+</if>
 </select>
+
 <select id="getDae" resultType="String">
 select name from dae
 where code=#{code}

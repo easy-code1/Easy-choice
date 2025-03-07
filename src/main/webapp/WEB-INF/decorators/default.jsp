@@ -326,6 +326,11 @@ function viewMy(){
 function hideMy(){
 	document.getElementById("mySub").style.visibility="hidden";
 }
+function search()
+{
+	if(document.getElementById("sword").value.trim() != "") // 검색어가 없는데 전달
+	  location="../product/productList?sword="+document.getElementById("sword").value;
+}
 </script>
 <sitemesh:write property="head" />
 </head>
@@ -340,9 +345,9 @@ function hideMy(){
   <div id="logo"><img src="../static/logo2.png" width="120" valign="middle" onclick="location='../main/main'"></div>
   <div id="search">
     <div id="searchForm">
-      <input type="text" name="sword" id="sword" placeholder="검색어를 입력하세요" onkeyup="chgX(this.value)">
+      <input type="text" name="sword" value="${sword}" id="sword" placeholder="검색어를 입력하세요" onkeyup="chgX(this.value)">
       <img src="../static/x.png" valign="middle" id="xpng" onclick="hideTxt()">
-      <img src="../static/search2.png" valign="middle" width="25">
+      <img src="../static/search2.png" valign="middle" width="25" onclick="search()">
     </div>
   </div>
   <div id="memMenu">
